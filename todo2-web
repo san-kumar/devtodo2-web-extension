@@ -1,5 +1,15 @@
 #!/bin/bash
+
+trap ctrl_c INT
+
+function ctrl_c() {
+   echo "Stopping PHP server.."
+   killall php
+}
+
 SELF=(`realpath $0`)
 SELF_DIR=(`dirname $SELF`)
 WORK_DIR=`pwd` php -d variables_order=EGPCS -S localhost:9090 $SELF_DIR/index.php > /dev/null 2>&1 &
-xdg-open http://localhost:9090
+xdg-open http://localhost:9090 > /dev/null 2>&1
+echo "Started PHP server. Press Ctrl+C to stop."
+sleep infinity
