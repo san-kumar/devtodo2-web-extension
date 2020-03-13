@@ -34,7 +34,7 @@ Make sure you understand what the commands above do before you copy-pasting ;)
 
 Just run `todo2-web` in any directory that has a `.todo2` file in it.
 
-The program basically reads and modifies `todo2-web` using the PHP script.
+The program basically reads and modifies the `.todo2` file using the PHP script.
 
 ## Uninstalling
 
@@ -42,7 +42,8 @@ Just delete the `~/devtodo2-web-extension` directory and undo any changes to `$P
 
 ## About
 
-It is just a 100 lines of PHP & Javascript. The front-end uses Vuejs and Milligram framework. Took me less than 2 hours to write it including this README file :^) 
+It is just a 100 lines of PHP & Javascript. The front-end uses Vuejs and Milligram framework. Took me less than 2 hours to write it including this README file &#x263A;
+ 
 
 Made it to scratch my own itch but in case someone finds it useful let me know!
 
