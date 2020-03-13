@@ -28,11 +28,11 @@ todo2 -a "test"
 todo2-web
 ````
 
-Make sure you understand what the commands above do before you copy-pasting ;)
+Make sure you understand what the commands do before you start copy-pasting ;)
 
 ## Running
 
-Just run `todo2-web` in any directory that has a `.todo2` file in it.
+Just run `todo2-web` in any directory that has a `.todo2` file in it. It should open up your web browser and you should see your todo list!
 
 The program basically reads and modifies the `.todo2` file using the PHP script.
 
