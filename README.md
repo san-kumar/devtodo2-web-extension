@@ -1,6 +1,6 @@
 # DevTodo2 Web Extenstion
 
-DevTodo2 is an amazing command line task manager for Linux.
+[DevTodo2](https://github.com/alecthomas/devtodo2) is an amazing command line task manager for Linux.
 
 This is a web plugin for it so that you can view / edit / search your todo list using the browser too.
 
@@ -49,4 +49,4 @@ Made it to scratch my own itch but in case someone finds it useful let me know!
 
 ## Credits
 
-All credit goes to Alec Thomas for his wonderful software.
+All credit goes to [Alec Thomas](https://github.com/alecthomas) for his wonderful software.
