@@ -31,6 +31,13 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
         label.task:hover a {
             visibility: visible
         }
+
+        .panel {
+            margin-top: 15px;
+            min-width: 50%;
+            max-height: calc(100vh - 120px);
+            overflow: auto;
+        }
     </style>
 </head>
 
@@ -38,9 +45,10 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
 
 <div id="app" class="container">
     <div class="row">
-        <div v-for="type in ['Pending', 'Completed']" class="col" style="margin-top: 15px; min-width: 50%">
+        <div v-for="type in ['Pending', 'Completed']" class="col panel">
             <div><input type="search" v-model.trim="search[type]" :placeholder="type + ' &#x1F50D;'" style="font-size: 24px; border: 0;"></div>
-            <div v-for="(task, i) in tasks" :key="task.text" v-if="(type === 'Pending' && !task.completion) || (type === 'Completed' && task.completion)" v-show="!search[type] || (task.text.indexOf(search[type]) !== -1)">
+            <div v-for="(task, i) in tasks" :key="task.text" v-if="(type === 'Pending' && !task.completion) || (type === 'Completed' && task.completion)"
+                 v-show="!search[type] || (task.text.indexOf(search[type]) !== -1)">
                 <label class="task">
                     <input type="checkbox" v-model="task.completion"> {{task.text}}
                     <a href="#" @click.prevent="tasks.splice(i, 1)">&#128465;</a>
@@ -49,7 +57,7 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
         </div>
     </div>
     <form class="row" style="margin-top: 30px;" @submit.prevent="addTask()">
-        <input type="text" placeholder="New task" v-model="task" style="margin-right: 5px;">
+        <input type="text" placeholder="New task" v-model.trim="task" style="margin-right: 5px;">
         <input class="button-primary" type="submit" value="Add">
     </form>
 </div>
