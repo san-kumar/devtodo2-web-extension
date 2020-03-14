@@ -1,0 +1,6 @@
+#!/bin/bash
+
+SELF=(`realpath $0`)
+SELF_DIR=(`dirname $SELF`)
+
+$SELF_DIR/todo2-web &

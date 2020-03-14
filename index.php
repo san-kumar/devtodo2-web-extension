@@ -35,17 +35,17 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
         .panel {
             margin-top: 15px;
             min-width: 50%;
-            max-height: calc(100vh - 120px);
+            max-height: calc(100vh - 125px);
             overflow: auto;
         }
     </style>
 </head>
 
-<body>
+<body style="margin: 0; padding: 0;">
 
 <div id="app" class="container">
     <div class="row">
-        <div v-for="type in ['Pending', 'Completed']" class="col panel">
+        <div v-for="type in ['Pending', 'Completed']" class="col panel" :style="{opacity: type === 'Completed' ? 0.45 : 1}">
             <div><input type="search" v-model.trim="search[type]" :placeholder="type + ' &#x1F50D;'" style="font-size: 24px; border: 0;"></div>
             <div v-for="(task, i) in tasks" :key="task.text" v-if="(type === 'Pending' && !task.completion) || (type === 'Completed' && task.completion)"
                  v-show="!search[type] || (task.text.indexOf(search[type]) !== -1)">
@@ -93,7 +93,8 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
                         final.push(task);
                     }
 
-                    fetch('', {method: "POST", body: new URLSearchParams("final=" + JSON.stringify(final))});
+                    fetch('', {method: "POST", body: new URLSearchParams("final=" + JSON.stringify(final))})
+                        .catch(e => alert("Save failed! " + e));
                 }
             }
         }
