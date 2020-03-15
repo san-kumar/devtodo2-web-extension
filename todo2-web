@@ -2,7 +2,7 @@
 
 SELF=(`realpath $0`)
 SELF_DIR=(`dirname $SELF`)
-pkill -f 'localhost:9090'
+pkill -f 'todo2-web'
 xdg-open http://localhost:9090 > /dev/null 2>&1 &
 echo "Starting PHP server in $SELF_DIR. Press Ctrl+C to stop."
-WORK_DIR=`pwd` php -d variables_order=EGPCS -S localhost:9090 $SELF_DIR/index.php > /dev/null 2>&1
+WORK_DIR=`pwd` php -d variables_order=EGPCS -d todo2-web=true -S localhost:9090 $SELF_DIR/index.php > /dev/null 2>&1
