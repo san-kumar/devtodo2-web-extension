@@ -4,7 +4,7 @@
 
 This is the web version of the same so that you can view / edit / search / re-order your todo list using any web browser.
 
-You can run it as standalone program or alongside `devtodo2` (it is 100% compatible with the `.todo2` files created by [DevTodo2](https://github.com/alecthomas/devtodo2))  
+You can run it as standalone program or alongside `DevTodo2` (it is 100% compatible with the `.todo2` files created by `DevTodo2`)  
 
 ## Screenshot
 
@@ -26,6 +26,7 @@ Just clone this repo and add the directory to your path (update `$PATH` in `.bas
 git clone git://github.com/san-kumar/devtodo2-web-extension.git ~/devtodo2-web-extension
 echo 'PATH="$PATH:~/devtodo2-web-extension"' >> ~/.bashrc
 source ~/.bashrc
+cd ~/your-project-dir
 todo2-web
 ````
 
