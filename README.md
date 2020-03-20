@@ -19,6 +19,7 @@ You can run it as standalone program or alongside `DevTodo2` (it is 100% compati
 - Super simple .todo2 JSON file format (can be hand edited or piped to any program as needed).
 - Works in every resolution or window size thanks to responsive CSS!
 - About 100 lines of super simple PHP / Vuejs code (great for learning as a weekend project)
+- Should work easily on Windows / Mac too (just need to port todo2-web bash script ~ about 10 lines)
 
 ## Requirements
 
