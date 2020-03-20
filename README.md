@@ -10,7 +10,6 @@ You can run it as standalone program or alongside `DevTodo2` (it is 100% compati
 
 ![Screenshot](./screenshot.gif)
 
-Works in any resolution thanks to responsive css!
 
 ## Benefits
 
@@ -18,6 +17,7 @@ Works in any resolution thanks to responsive css!
 - No messy installation, just clone the repo and you're set! 
 - Compatible with command line tool `DevTodo2`, so you can switch between GUI and command line seamlessly. 
 - Super simple .todo2 JSON file format (can be hand edited or piped to any program as needed).
+- Works in every resolution or window size thanks to responsive CSS!
 - About 100 lines of super simple PHP / Vuejs code (great for learning as a weekend project)
 
 ## Requirements
