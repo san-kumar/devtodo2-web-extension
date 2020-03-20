@@ -2,7 +2,9 @@
 
 [DevTodo2](https://github.com/alecthomas/devtodo2) is an amazing command line task manager for Linux.
 
-This is a web plugin for it so that you can view / edit / search your todo list using the browser too.
+This is the web version of the same so that you can view / edit / search / re-order your todo list using any web browser.
+
+You can run it as standalone program or alongside `devtodo2` (it is 100% compatible with the `.todo2` files created by [DevTodo2](https://github.com/alecthomas/devtodo2))  
 
 ## Screenshot
 
@@ -24,7 +26,6 @@ Just clone this repo and add the directory to your path (update `$PATH` in `.bas
 git clone git://github.com/san-kumar/devtodo2-web-extension.git ~/devtodo2-web-extension
 echo 'PATH="$PATH:~/devtodo2-web-extension"' >> ~/.bashrc
 source ~/.bashrc
-todo2 -a "test"
 todo2-web
 ````
 
@@ -34,7 +35,7 @@ Make sure you understand what the commands do before you start copy-pasting ;)
 
 Just run `todo2-web` in any directory that has a `.todo2` file in it. It should open up your web browser and you should see your todo list!
 
-The program basically reads and modifies the `.todo2` file using the PHP script.
+The program basically creates/reads a `.todo2` file (JSON) using the PHP and opens it in your favorite browser.
 
 ## Uninstalling
 
@@ -49,4 +50,4 @@ Made it to scratch my own itch but in case someone finds it useful let me know!
 
 ## Credits
 
-All credit goes to [Alec Thomas](https://github.com/alecthomas) for his wonderful software.
+Credit goes to [Alec Thomas](https://github.com/alecthomas) for his wonderful software.
