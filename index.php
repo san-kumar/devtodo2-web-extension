@@ -51,7 +51,7 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
                 <div v-for="(task, i) in tasks" :key="task.text" v-if="(type === 'Pending' && !task.completion) || (type === 'Completed' && task.completion)"
                      v-show="!search[type] || (task.text.indexOf(search[type]) !== -1)">
                     <label class="task">
-                        <input type="checkbox" v-model="task.completion"> <span :title="timeSince(task) + ' ago'">{{task.text}}</span>
+                        <input type="checkbox" v-model="task.completion"> <span :title="timeSince(task)">{{task.text}}</span>
                         <a href="#" @click.prevent="tasks.splice(i, 1)">&#128465;</a>
                     </label>
                 </div>
@@ -68,6 +68,7 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/sortablejs@1.4.2"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 
 <script>
 
@@ -88,29 +89,7 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
             },
             timeSince(task) {
                 var date = task.completion > 0 ? task.completion * 1000 : task.creation * 1000;
-                var seconds = Math.floor((new Date() - date) / 1000);
-                var interval = Math.floor(seconds / 31536000);
-
-                if (interval >= 1) {
-                    return interval + " years";
-                }
-                interval = Math.floor(seconds / 2592000);
-                if (interval >= 1) {
-                    return interval + " months";
-                }
-                interval = Math.floor(seconds / 86400);
-                if (interval >= 1) {
-                    return interval + " days";
-                }
-                interval = Math.floor(seconds / 3600);
-                if (interval >= 1) {
-                    return interval + " hours";
-                }
-                interval = Math.floor(seconds / 60);
-                if (interval >= 1) {
-                    return interval + " minutes";
-                }
-                return Math.floor(seconds) + " seconds";
+                return timeago.format(date);
             }
         },
         watch: {
