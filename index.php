@@ -47,13 +47,15 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
     <div class="row">
         <div v-for="type in ['Pending', 'Completed']" class="col panel" :style="{opacity: type === 'Completed' ? 0.45 : 1}">
             <div><input type="search" v-model.trim="search[type]" :placeholder="type + ' &#x1F50D;'" style="font-size: 24px; border: 0;"></div>
-            <div v-for="(task, i) in tasks" :key="task.text" v-if="(type === 'Pending' && !task.completion) || (type === 'Completed' && task.completion)"
-                 v-show="!search[type] || (task.text.indexOf(search[type]) !== -1)">
-                <label class="task">
-                    <input type="checkbox" v-model="task.completion"> {{task.text}}
-                    <a href="#" @click.prevent="tasks.splice(i, 1)">&#128465;</a>
-                </label>
-            </div>
+            <draggable v-model="tasks">
+                <div v-for="(task, i) in tasks" :key="task.text" v-if="(type === 'Pending' && !task.completion) || (type === 'Completed' && task.completion)"
+                     v-show="!search[type] || (task.text.indexOf(search[type]) !== -1)">
+                    <label class="task">
+                        <input type="checkbox" v-model="task.completion"> {{task.text}}
+                        <a href="#" @click.prevent="tasks.splice(i, 1)">&#128465;</a>
+                    </label>
+                </div>
+            </draggable>
         </div>
     </div>
     <form class="row" style="margin-top: 30px;" @submit.prevent="addTask()">
@@ -64,8 +66,11 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.min.css" integrity="sha256-Ro/wP8uUi8LR71kwIdilf78atpu8bTEwrK5ZotZo+Zc=" crossorigin="anonymous"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sortablejs@1.4.2"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
 
 <script>
+
     new Vue({
         el: '#app',
         data() {
