@@ -12,6 +12,14 @@ You can run it as standalone program or alongside `DevTodo2` (it is 100% compati
 
 Works in any resolution thanks to responsive css!
 
+## Benefits
+
+- Maintains a separate todo file in each directory (so easy to create a todo list per project / folder)
+- No messy installation, just clone the repo and you're set! 
+- Compatible with command line tool `DevTodo2`, so you can switch between GUI and command line seamlessly. 
+- Super simple .todo2 JSON file format (can be hand edited or piped to any program as needed).
+- About 100 lines of super simple PHP / Vuejs code (great for learning as a weekend project)
+
 ## Requirements
 
 - PHP 7+
@@ -34,9 +42,9 @@ Make sure you understand what the commands do before you start copy-pasting ;)
 
 ## Running
 
-Just run `todo2-web` in any directory that has a `.todo2` file in it. It should open up your web browser and you should see your todo list!
+Just run `todo2-web` in any directory in which you want to create a new todo list. It should open up your web browser and you should see your todo list!
 
-The program basically creates/reads a `.todo2` file (JSON) using the PHP and opens it in your favorite browser.
+The program basically creates/reads a `.todo2` file (JSON) using the PHP and opens the editor in your favorite web browser.
 
 ## Uninstalling
 
@@ -51,4 +59,4 @@ Made it to scratch my own itch but in case someone finds it useful let me know!
 
 ## Credits
 
-Credit goes to [Alec Thomas](https://github.com/alecthomas) for his wonderful software.
+Credit goes to [Alec Thomas](https://github.com/alecthomas) for his wonderful software and inspiration.
