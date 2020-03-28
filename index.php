@@ -50,9 +50,13 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
             <draggable v-model="tasks">
                 <div v-for="(task, i) in tasks" :key="task.text" v-if="(type === 'Pending' && !task.completion) || (type === 'Completed' && task.completion)"
                      v-show="!search[type] || (task.text.indexOf(search[type]) !== -1)">
-                    <label class="task">
+                    <form v-if="task === sel" @submit.prevent="sel = null">
+                        <input type="text" v-model.lazy="task.text" @blur="sel = null"/>
+                    </form>
+                    <label class="task" v-else>
                         <input type="checkbox" v-model="task.completion"> <span :title="timeSince(task)">{{task.text}}</span>
-                        <a href="#" @click.prevent="tasks.splice(i, 1)">&#128465;</a>
+                        <a href="#" @click.prevent="sel = task" title="edit">&#x270D;</a>
+                        <a href="#" @click.prevent="tasks.splice(i, 1)" title="remove">&#128465;</a>
                     </label>
                 </div>
             </draggable>
@@ -75,7 +79,7 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
     new Vue({
         el: '#app',
         data() {
-            return {search: {}, task: '', tasks: <?=json_encode($tasks['tasks'])?>}
+            return {sel: null, search: {}, task: '', tasks: <?=json_encode($tasks['tasks'])?>}
         },
         methods: {
             now() {
