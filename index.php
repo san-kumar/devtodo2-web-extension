@@ -24,11 +24,11 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
     <title><?= ucfirst(basename($dir)) ?>: Todo</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
-        label.task a {
+        label.task a.ln {
             visibility: hidden
         }
 
-        label.task:hover a {
+        label.task:hover a.ln {
             visibility: visible
         }
 
@@ -54,9 +54,13 @@ $tasks = json_decode(file_get_contents($todo), TRUE);
                         <input type="text" v-model.lazy="task.text" @blur="sel = null"/>
                     </form>
                     <label class="task" v-else>
-                        <input type="checkbox" v-model="task.completion"> <span :title="timeSince(task)">{{task.text}}</span>
-                        <a href="#" @click.prevent="sel = task" title="edit">&#x270D;</a>
-                        <a href="#" @click.prevent="tasks.splice(i, 1)" title="remove">&#128465;</a>
+                        <input type="checkbox" v-model="task.completion">
+                        <span :title="timeSince(task)">{{task.text}}</span>
+                        <sup><a href="#" @click.prevent="$set(task, 'starred', false)" v-if="task.starred" title="starred">&#11088;</a></sup>
+
+                        <a class="ln" href="#" @click.prevent="$set(task, 'starred', true)" title="star" v-if="!task.starred">&#11088;</a>
+                        <a class="ln" href="#" @click.prevent="sel = task" title="edit">&#x270D;</a>
+                        <a class="ln" href="#" @click.prevent="tasks.splice(i, 1)" title="remove">&#128465;</a>
                     </label>
                 </div>
             </draggable>
